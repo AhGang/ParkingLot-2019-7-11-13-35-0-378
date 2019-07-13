@@ -57,4 +57,9 @@ public class ServiceManager extends ParkingBoy {
     public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
     }
+
+    public ArrayList<ParkingBoy> manageParkingBoy() {
+        return this.manageList;
+
+    }
 }

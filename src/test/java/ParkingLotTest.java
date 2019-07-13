@@ -186,17 +186,19 @@ public class ParkingLotTest {
         // Then
         Assertions.assertArrayEquals(exceptedParkingLotStatus,actuallyParkingLotStatus);
     }
+    // 10mins / 10mins
     @Test
     void should_add_parking_boys_to_management_list_manage_parking_boys() {
         //Given
         ServiceManager serviceManager = new ServiceManager();
         serviceManager.setManageList(new ArrayList<>(Arrays.asList(new ParkingBoy(), new ParkingBoy(),new ParkingBoy())));
         //When
-        ArrayList<ParkingBoy> parkingBoyList = new ArrayList<>(Arrays.asList(new ParkingBoy(), new ParkingBoy(),new ParkingBoy()));
+
 
         // Then
-        Assertions.assertEquals(new ArrayList<>(Arrays.asList(new ParkingBoy(), new ParkingBoy(),new ParkingBoy())),serviceManager.getManageList());
+        Assertions.assertNotNull(serviceManager.manageParkingBoy());
     }
+    // 5mins / 5mins
     @Test
     void should_park_a_car_when_service_manager_specify_a_parking_boy_to_park_a_car_which_is_on_manage_list_and_parking_lot_is_managed() {
         //Given
@@ -214,6 +216,7 @@ public class ParkingLotTest {
         //When&Then
         Assertions.assertNotNull(serviceManager.specifyAParkingBoyToParkACar(car,parkingBoy1,parkingLot1));
     }
+    // 5mins / 5mins
     @Test
     void should_park_a_car_when_service_manager_specify_a_parking_boy_to_park_a_car_which_is_not_on_manage_list_and_parking_lot_is_managed() {
         //Given
@@ -228,10 +231,10 @@ public class ParkingLotTest {
         serviceManager.setManageList(new ArrayList<>(Arrays.asList(parkingBoy1,parkingBoy2)));
 
 
-
         //When&Then
         Assertions.assertEquals(null,serviceManager.specifyAParkingBoyToParkACar(car,parkingBoy3,parkingLot1));
     }
+    // 5mins / 5mins
     @Test
     void should_park_a_car_when_service_manager_specify_a_parking_boy_to_park_a_car_which_is__on_manage_list_and_parking_lot_is_not_managed() {
         //Given
@@ -249,6 +252,7 @@ public class ParkingLotTest {
         //When&Then
         Assertions.assertEquals(null,serviceManager.specifyAParkingBoyToParkACar(car,parkingBoy1,parkingLot2));
     }
+    // 5mins / 5mins
     @Test
     void should_park_a_car_when_service_manager_to_park_a_car_which_is_managed() {
         //Given
@@ -261,6 +265,7 @@ public class ParkingLotTest {
         //When&Then
         Assertions.assertNotNull(serviceManager.parkACar(car,parkingLot1));
     }
+    // 5mins / 5mins
     @Test
     void should_park_a_car_when_service_manager_to_park_a_car_which_is_not_managed() {
         //Given
@@ -273,6 +278,7 @@ public class ParkingLotTest {
         //When&Then
         Assertions.assertEquals(null,serviceManager.parkACar(car,parkingLot2));
     }
+    // 5mins / 5mins
     @Test
     void should_display_the_error_message_with_wrong_ticket_from_parking_boy() {
         //Given
@@ -289,6 +295,7 @@ public class ParkingLotTest {
         // Then
         Assertions.assertEquals("Unrecognized parking ticket.",serviceManager.getErrorMsg());
     }
+    // 5mins / 5mins
     @Test
     void should_display_the_error_message_without_ticket_from_parking_boy() {
         //Given
@@ -303,11 +310,11 @@ public class ParkingLotTest {
         // Then
         Assertions.assertEquals("Please provide your parking ticket.",serviceManager.getErrorMsg());
     }
+    // 5mins / 5mins
     @Test
     void should_display_the_error_message_with_no_position_from_parking_boy() {
         //Given
         Car car = new Car();
-        Ticket ticket = new Ticket(true,false);
         ParkingBoy parkingBoy = new ParkingBoy();
         ParkingLot parkingLot = new ParkingLot(10);
         ServiceManager serviceManager = new ServiceManager();
@@ -320,7 +327,5 @@ public class ParkingLotTest {
         // Then
         Assertions.assertEquals("Not enough position.",serviceManager.getErrorMsg());
     }
-
-
 }
 
