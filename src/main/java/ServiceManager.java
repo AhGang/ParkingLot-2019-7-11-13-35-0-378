@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class ServiceManager extends ParkingBoy {
     private ArrayList<ParkingBoy> manageList;
+    private String errorMsg;
 
     public ArrayList<ParkingBoy> getManageList() {
         return manageList;
@@ -45,5 +46,15 @@ public class ServiceManager extends ParkingBoy {
             }
         }
         return null;
+    }
+
+    @Override
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    @Override
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 }

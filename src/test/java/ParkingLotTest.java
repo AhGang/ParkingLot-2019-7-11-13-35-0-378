@@ -273,6 +273,54 @@ public class ParkingLotTest {
         //When&Then
         Assertions.assertEquals(null,serviceManager.parkACar(car,parkingLot2));
     }
+    @Test
+    void should_display_the_error_message_with_wrong_ticket_from_parking_boy() {
+        //Given
+        Car car = new Car();
+        Ticket ticket = new Ticket(true,false);
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot1 = new ParkingLot(2,0);
+        ServiceManager serviceManager = new ServiceManager();
+
+        //When
+        boolean isValidTicket = parkingBoy.checkTicket(ticket);
+        parkingBoy.fetchACar(isValidTicket);
+        parkingBoy.passErrorMsgToManager(parkingBoy.getErrorMsg(),serviceManager);
+        // Then
+        Assertions.assertEquals("Unrecognized parking ticket.",serviceManager.getErrorMsg());
+    }
+    @Test
+    void should_display_the_error_message_without_ticket_from_parking_boy() {
+        //Given
+        Car car = new Car();
+        Ticket ticket = null;
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ServiceManager serviceManager = new ServiceManager();
+
+        //When
+        parkingBoy.checkTicket(ticket);
+        parkingBoy.passErrorMsgToManager(parkingBoy.getErrorMsg(),serviceManager);
+        // Then
+        Assertions.assertEquals("Please provide your parking ticket.",serviceManager.getErrorMsg());
+    }
+    @Test
+    void should_display_the_error_message_with_no_position_from_parking_boy() {
+        //Given
+        Car car = new Car();
+        Ticket ticket = new Ticket(true,false);
+        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkingLot = new ParkingLot(10);
+        ServiceManager serviceManager = new ServiceManager();
+
+        //When
+        parkingLot.setParkedCarCount(10);
+        parkingLot.isCapacityFulled();
+        parkingBoy.checkParkingLotStatus(parkingLot);
+        parkingBoy.passErrorMsgToManager(parkingBoy.getErrorMsg(),serviceManager);
+        // Then
+        Assertions.assertEquals("Not enough position.",serviceManager.getErrorMsg());
+    }
+
 
 }
 

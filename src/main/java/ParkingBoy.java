@@ -110,4 +110,8 @@ public class ParkingBoy {
     protected Ticket parkACarToSpecifyParkingLot(Car car) {
         return new Ticket();
     }
+
+    public void passErrorMsgToManager(String errorMsg, ServiceManager serviceManager) {
+        serviceManager.setErrorMsg(errorMsg);
+    }
 }
