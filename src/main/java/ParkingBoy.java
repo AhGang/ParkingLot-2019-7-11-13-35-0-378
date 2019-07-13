@@ -106,4 +106,8 @@ public class ParkingBoy {
         }
         return arr;
     }
+
+    protected Ticket parkACarToSpecifyParkingLot(Car car) {
+        return new Ticket();
+    }
 }
