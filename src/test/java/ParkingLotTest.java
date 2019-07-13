@@ -154,5 +154,37 @@ public class ParkingLotTest {
         // Then
         Assertions.assertArrayEquals(exceptedParkingLotStatus,actuallyParkingLotStatus);
     }
+    // 20mins / 13mins
+    @Test
+    void should_get_parking_lot_status_when_have_two_parking_lot_and_smarted_parkinng_boy() {
+        //Given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        ArrayList<Car> carList = new ArrayList<>(Arrays.asList(new Car(), new Car(),new Car()));
+        ParkingLot parkingLot1 = new ParkingLot(2,0);
+        ParkingLot parkingLot2 = new ParkingLot(3,0);
+        smartParkingBoy.setParkingLotList(new ArrayList<>(Arrays.asList(parkingLot1, parkingLot2)));
+        //When
+        smartParkingBoy.parkMultiplyCars(carList);
+        int actuallyParkingLotStatus[] =  smartParkingBoy.getParkingLotCount();
+        int exceptedParkingLotStatus[] = {1,2};
+        // Then
+        Assertions.assertArrayEquals(exceptedParkingLotStatus,actuallyParkingLotStatus);
+    }
+    // 10mins / 10mins
+//    @Test
+//    void should_get_parking_lot_status_when_have_two_parking_lot_and_super_smarted_parkinng_boy() {
+//        //Given
+//        ParkingBoy parkingBoy = new ParkingBoy();
+//        ArrayList<Car> carList = new ArrayList<>(Arrays.asList(new Car(), new Car(),new Car()));
+//        ParkingLot parkingLot1 = new ParkingLot(2,0);
+//        ParkingLot parkingLot2 = new ParkingLot(3,0);
+//        parkingBoy.setParkingLotList(new ArrayList<>(Arrays.asList(parkingLot1, parkingLot2)));
+//        //When
+//        parkingBoy.parkMultiplyCars(carList);
+//        int actuallyParkingLotStatus[] =  parkingBoy.getParkingLotCount();
+//        int exceptedParkingLotStatus[] = {2,1};
+//        // Then
+//        Assertions.assertArrayEquals(exceptedParkingLotStatus,actuallyParkingLotStatus);
+//    }
 }
 

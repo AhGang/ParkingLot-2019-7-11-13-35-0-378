@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class ParkingLot {
     int capacity;
     int parkedCarCount;
+
+    int remainingCount;
     boolean isFulled = false;
     public ParkingLot(int capacity) {
         this.capacity = capacity;
@@ -12,11 +14,20 @@ public class ParkingLot {
     public ParkingLot(int capacity, int parkedCarCount) {
         this.capacity = capacity;
         this.parkedCarCount = parkedCarCount;
+        this.remainingCount = capacity;
     }
     public ParkingLot(int capacity, int parkedCarCount, boolean isFulled) {
         this.capacity = capacity;
         this.parkedCarCount = parkedCarCount;
         this.isFulled = isFulled;
+    }
+
+    public int getRemainingCount() {
+        return remainingCount;
+    }
+
+    public void setRemainingCount(int remainingCount) {
+        this.remainingCount --;
     }
 
     public int getCapacity() {
@@ -31,7 +42,10 @@ public class ParkingLot {
     }
 
     public void setParkedCarCount(int parkedCarCount) {
-        this.parkedCarCount = parkedCarCount;
+        this.parkedCarCount++;
+        if(this.parkedCarCount == this.capacity){
+            this.isFulled = true;
+        }
     }
 
 
