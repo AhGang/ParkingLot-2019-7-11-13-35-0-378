@@ -57,20 +57,19 @@ public class ParkingBoy {
 
     public ArrayList<Ticket> parkMultiplyCars(ArrayList<Car> carList) {
         int countOfCar = carList.size();
-        for(int i = 0 ;i < parkingLotList.size();i++ ){
-            if(countOfCar > 0){
-                if(countOfCar >= parkingLotList.get(i).getCapacity()){
-                    parkingLotList.get(i).setParkedCarCount(parkingLotList.get(i).getCapacity());
-                    countOfCar -= parkingLotList.get(i).getCapacity();
-                }else{
-                    parkingLotList.get(i).setParkedCarCount(countOfCar);
-                    countOfCar = 0;
-
+        for(int j = 0; j < countOfCar;j++) {
+            for(int i = 0 ;i < parkingLotList.size();i++ ){
+                 if (parkingLotList.get(i).getRemainingCount() > 0){
+                    parkingLotList.get(i).setParkedCarCount(1);
+                    parkingLotList.get(i).setRemainingCount(1);
+                    this.parkACar(carList.get(j));
+                    break;
+                }
                 }
             }
-
+        if(countOfCar > 0){
+            this.checkParkingLotStatus(getParkingLotList().get(0));
         }
-
         return ParkingLot.getTickets(carList);
     }
 

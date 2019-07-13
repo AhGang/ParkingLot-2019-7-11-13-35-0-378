@@ -26,8 +26,8 @@ public class ParkingLot {
         return remainingCount;
     }
 
-    public void setRemainingCount(int remainingCount) {
-        this.remainingCount --;
+    public void setRemainingCount(int num) {
+        this.remainingCount -= num;
     }
 
     public int getCapacity() {
@@ -41,8 +41,8 @@ public class ParkingLot {
         return parkedCarCount;
     }
 
-    public void setParkedCarCount(int parkedCarCount) {
-        this.parkedCarCount++;
+    public void setParkedCarCount(int num) {
+        this.parkedCarCount += num;
         if(this.parkedCarCount == this.capacity){
             this.isFulled = true;
         }
