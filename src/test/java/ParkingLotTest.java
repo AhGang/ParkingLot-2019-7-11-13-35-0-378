@@ -303,7 +303,6 @@ public class ParkingLotTest {
         Ticket ticket = null;
         ParkingBoy parkingBoy = new ParkingBoy();
         ServiceManager serviceManager = new ServiceManager();
-
         //When
         parkingBoy.checkTicket(ticket);
         parkingBoy.passErrorMsgToManager(parkingBoy.getErrorMsg(),serviceManager);
